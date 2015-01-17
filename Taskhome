@@ -1,29 +1,27 @@
 <body>
 
 <div id="header">
-<h1>City Gallery</h1>
+<h1>Simple Tasking</h1>
 </div>
 
 <div id="nav">
-London<br>
-Paris<br>
-Tokyo<br>
+Task 1<br>
+Task 2<br>
+Task 3<br>
 </div>
 
 <div id="section">
-<h1>London</h1>
+<h1>Task 1</h1>
 <p>
-London is the capital city of England. It is the most populous city in the United Kingdom,
-with a metropolitan area of over 13 million inhabitants.
+This is the first task
 </p>
 <p>
-Standing on the River Thames, London has been a major settlement for two millennia,
-its history going back to its founding by the Romans, who named it Londinium.
+This task is engineering or some shit
 </p>
 </div>
 
 <div id="footer">
-Copyright © W3Schools.com
+Copyright © HexTech
 </div>
 
 </body>
