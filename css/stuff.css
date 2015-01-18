@@ -2,3 +2,9 @@
 	padding-top: 0px;
 	padding-bottom: 1px;
 }
+
+.button {
+	display: block;
+	width: 750px;
+	height: 100px;
+}
