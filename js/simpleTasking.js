@@ -36,29 +36,7 @@ $(document).ready(function () {
         var AmPm = document.getElementById("y").value;
         var description = document.getElementById("notes").value;
         var monthID = toMonthID(month);
-        var AmPmID;
-        //Gets AmPmID to compare them
-        if(AmPm === "AM"){
-        AmPmID = 1;
-        }
-        else if (AmPm === "PM") {
-            AmPmID = 2;
-        }
-        else {
-            AmPmID = 0;
-        }
-        if((monthID === "0")||(day === "dd")) {
-           year = 0;
-           monthID = 0;
-           day = 0;
-           
-           AmPmID = 0;
-        }
-        if ((hour === "hh")||(minute === "mm")||(AmPm === "--")) {
-            hour = 0;
-            minute = 0;
-            AmPmID = 0;
-        }
+        
         var task1 = new task(eventA, month, monthID, day, year, hour, minute, AmPm, description, tasks.length)
         
         tasks[tasks.length] = task1
@@ -106,33 +84,10 @@ $(document).ready(function () {
 
     });
 
-    /*$('#signOut').hover(function () {
-        $(this).fadeTo(200,.2);
-    }, function () {
-        $(this).fadeTo(200,1);
-    });
-
-    $("#addTask").blur(function () {
-        alert("Handler for .blur() called.");
-    });*/
 });
-/*
-function transferShit(obj, parentobj) {
-    var o = document.createElement("div");
-    o.innerHTML = '<input type="button" />';
-
-    o.onClick = function () {
-        someListener(obj)
-    }
-
-    parentobj.appendChild(o.firstChild);
-}
-*/
 
 var toMonthID = function (month) {
     switch (month){
-        case "mm":
-            return 1000;
         case "January":
             return 1;
         case "February":
