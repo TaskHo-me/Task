@@ -3,14 +3,10 @@ var totalminutes1 = 0;
 var totalminutes2 = 0;
 $(document).ready(function () {
     ////////
-    $("#Tester").click(function () {
-        loadState();
-        console.log("the button was pressed");
-    })
     
     if(JSON.parse(localStorage.getItem("allTasks")) !== null)
     {
-        loadState();
+        loadstate();
     }
 
     $("TaskHome").click(function () {
@@ -19,7 +15,7 @@ $(document).ready(function () {
     });
 
 
-    $("#addTask").click(function () {
+    $("#addButton").click(function () {
         var eventA = document.getElementById("event").value;
         var month = document.getElementById("month").value;
         var day = parseInt(document.getElementById("day").value);
@@ -30,28 +26,7 @@ $(document).ready(function () {
         var description = document.getElementById("notes").value;
         var monthID = toMonthID(month);
         var AmPmID;
-        //Gets AmPmID to compare them
-        if(AmPm === "AM"){
-            AmPmID = 1;
-        }
-        else if (AmPm === "PM") {
-            AmPmID = 2;
-        }
-        else {
-            AmPmID = 0;
-        }
-        if((monthID === "0")||(day === "dd")) {
-            year = 0;
-            monthID = 0;
-            day = 0;
-           
-            AmPmID = 0;
-        }
-        if ((hour === "hh")||(minute === "mm")||(AmPm === "--")) {
-            hour = 0;
-            minute = 0;
-            AmPmID = 0;
-        }
+
         var task1 = new task(eventA, month, monthID, day, year, hour, minute, AmPm, description, tasks.length)
         
         tasks[tasks.length] = task1
@@ -94,30 +69,32 @@ $(document).ready(function () {
 
         }
         saveState();
+        window.open('index.html', '_self', false)
     });
 
+    
 });
-
-if (typeof (storage) !== "undefined") {
-function loadState() {
+function loadstate() {
     tasks = JSON.parse(localStorage.getItem("allTasks"));
-        if (!tasks)
-            return;
-    }
-    function saveState() {
-        localStorage.setItem("allTasks", JSON.stringify(tasks));
-    }
-    function deleteTask(index) {
-        tasks.splice(index, index);
-    }
+    if (!tasks)
+        return;
 }
+
+function saveState() {
+    localStorage.setItem("allTasks", JSON.stringify(tasks));
+}
+
+function deleteTask(index) {
+    tasks.splice(index, index);
+    saveState();
+}
+
+
 
 
 
 var toMonthID = function (month) {
     switch (month){
-        case "mm":
-            return 1000;
         case "January":
             return 1;
         case "February":
@@ -194,10 +171,4 @@ var displayTags = function (task)
     {
         console.log(task.tags[i]);
     }
-}
-
-
-var deleteTask = function(task)
-{
-    mainOrganizer.tasks.splice(task.index1, task.index1);
 }
