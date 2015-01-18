@@ -15,14 +15,21 @@ $(document).ready(function () {
             tasks.splice(index, index);
         }
     }
+    $("#save").click(function (){
+       saveState();
 
-        $("#save").click(function (){
-        saveState();
-
-        console.log("Your tasks have been saved.")
+       console.log("Your tasks have been saved.")
     })
 
-    loadState();
+    if(JSON.parse(localStorage.getItem("allTasks")) !== null)
+    {
+        loadState();
+    }
+
+    $("TaskHome").click(function () {
+
+
+    });
 
     $("#addButton").click(function () {
         var eventA = document.getElementById("event").value;
@@ -33,23 +40,18 @@ $(document).ready(function () {
         var minute = parseInt(document.getElementById("minute").value);
         var AmPm = document.getElementById("y").value;
         var description = document.getElementById("notes").value;
-
         var monthID = toMonthID(month);
-
-        var AmPmID
-
+        var AmPmID;
         //Gets AmPmID to compare them
         if(AmPm === "AM"){
         AmPmID = 1;
         }
-        else if(AmPm === "PM") {
-        AmPmID = 2;
+        else if (AmPm === "PM") {
+            AmPmID = 2;
         }
         else {
-        AmPmID = 0;
+            AmPmID = 0;
         }
-
-        
         if((monthID === "0")||(day === "dd")) {
            year = 0;
            monthID = 0;
@@ -62,11 +64,8 @@ $(document).ready(function () {
             minute = 0;
             AmPmID = 0;
         }
-
-
         var task1 = new task(eventA, month, monthID, day, year, hour, minute, AmPm, description, tasks.length)
         
-
         tasks[tasks.length] = task1
         var temp,temp2;
         totalminutes1 = task1.minute + task1.hour*60 + task1.day*1440 + task1.monthID*44640 + task1.year*535680
@@ -106,11 +105,6 @@ $(document).ready(function () {
             tasks[i].index1 = i;
 
         }
-
-
-
-
-
         displayName(task1);
         displayDate(task1);
 
@@ -126,6 +120,18 @@ $(document).ready(function () {
         alert("Handler for .blur() called.");
     });*/
 });
+/*
+function transferShit(obj, parentobj) {
+    var o = document.createElement("div");
+    o.innerHTML = '<input type="button" />';
+
+    o.onClick = function () {
+        someListener(obj)
+    }
+
+    parentobj.appendChild(o.firstChild);
+}
+*/
 
 var toMonthID = function (month) {
     switch (month){
