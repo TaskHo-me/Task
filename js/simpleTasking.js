@@ -2,20 +2,12 @@ var tasks = [];
 var totalminutes1 = 0;
 var totalminutes2 = 0;
 $(document).ready(function () {
-    if (typeof (storage) !== "undefined") {
-        function loadState() {
-            tasks = JSON.parse(localStorage.getItem("allTasks"));
-            if (!tasks)
-                return;
-        }
-        function saveState() {
-            localStorage.setItem("allTasks", JSON.stringify(tasks));
-        }
-        function deleteTask(index) {
-            tasks.splice(index, index);
-        }
-    }
-
+    ////////
+    $("#Tester").click(function () {
+        loadState();
+        console.log("the button was pressed");
+    })
+    
     if(JSON.parse(localStorage.getItem("allTasks")) !== null)
     {
         loadState();
@@ -26,7 +18,8 @@ $(document).ready(function () {
 
     });
 
-    $("#addButton").click(function () {
+
+    $("#addTask").click(function () {
         var eventA = document.getElementById("event").value;
         var month = document.getElementById("month").value;
         var day = parseInt(document.getElementById("day").value);
@@ -36,24 +29,46 @@ $(document).ready(function () {
         var AmPm = document.getElementById("y").value;
         var description = document.getElementById("notes").value;
         var monthID = toMonthID(month);
-        
+        var AmPmID;
+        //Gets AmPmID to compare them
+        if(AmPm === "AM"){
+            AmPmID = 1;
+        }
+        else if (AmPm === "PM") {
+            AmPmID = 2;
+        }
+        else {
+            AmPmID = 0;
+        }
+        if((monthID === "0")||(day === "dd")) {
+            year = 0;
+            monthID = 0;
+            day = 0;
+           
+            AmPmID = 0;
+        }
+        if ((hour === "hh")||(minute === "mm")||(AmPm === "--")) {
+            hour = 0;
+            minute = 0;
+            AmPmID = 0;
+        }
         var task1 = new task(eventA, month, monthID, day, year, hour, minute, AmPm, description, tasks.length)
         
         tasks[tasks.length] = task1
         var temp,temp2;
         totalminutes1 = task1.minute + task1.hour*60 + task1.day*1440 + task1.monthID*44640 + task1.year*535680
         if(task1.AmPm === "PM") {
-        totalminutes1 += 720
+            totalminutes1 += 720
         }
 
         if (tasks.length > 1)
         {
             for(i=0; i<tasks.length; i++)
             {
-               totalminutes2 = tasks[i].minute + tasks[i].hour*60 + tasks[i].day*1440 + tasks[i].monthID*44640 + tasks[i].year*535680;
+                totalminutes2 = tasks[i].minute + tasks[i].hour*60 + tasks[i].day*1440 + tasks[i].monthID*44640 + tasks[i].year*535680;
                 if(tasks[i].AmPm === "PM") 
                 {
-                     totalminutes2 += 720
+                    totalminutes2 += 720
                 }
                 if (totalminutes1 < totalminutes2) 
                 {
@@ -78,16 +93,31 @@ $(document).ready(function () {
             tasks[i].index1 = i;
 
         }
-        displayName(task1);
-        displayDate(task1);
         saveState();
-
     });
 
 });
 
+if (typeof (storage) !== "undefined") {
+function loadState() {
+    tasks = JSON.parse(localStorage.getItem("allTasks"));
+        if (!tasks)
+            return;
+    }
+    function saveState() {
+        localStorage.setItem("allTasks", JSON.stringify(tasks));
+    }
+    function deleteTask(index) {
+        tasks.splice(index, index);
+    }
+}
+
+
+
 var toMonthID = function (month) {
     switch (month){
+        case "mm":
+            return 1000;
         case "January":
             return 1;
         case "February":
@@ -164,23 +194,6 @@ var displayTags = function (task)
     {
         console.log(task.tags[i]);
     }
-}
-
-var displayName = function (task)
-{
-    console.log(task.eventA);
-}
-
-var displayDate = function(task)
-{
-    console.log(task.month);
-    console.log(task.day);
-    console.log(task.year);
-}
-var displayStatus = function (task)
-{
-    console.log(task.status);
-
 }
 
 
