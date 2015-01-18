@@ -15,11 +15,6 @@ $(document).ready(function () {
             tasks.splice(index, index);
         }
     }
-    $("#save").click(function (){
-       saveState();
-
-       console.log("Your tasks have been saved.")
-    })
 
     if(JSON.parse(localStorage.getItem("allTasks")) !== null)
     {
@@ -107,6 +102,7 @@ $(document).ready(function () {
         }
         displayName(task1);
         displayDate(task1);
+        saveState();
 
     });
 
