@@ -88,6 +88,8 @@ $(document).ready(function () {
 
 var toMonthID = function (month) {
     switch (month){
+        case "mm":
+            return "NaN";
         case "January":
             return 1;
         case "February":
