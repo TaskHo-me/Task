@@ -1,25 +1,63 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
+  <head>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <!--<script src = "js/simpleTasking.js"></script>-->
 
-<head>
-	<title>
-		TaskHo.me
-	</title>
-</head>
+      <script src= "js/mainViewScript.js"></script>
+    <center>
+    <title>Welcome to TaskHome</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href = "css/bootstrap.css" rel="stylesheet">
+    <link href = "css/styles.css" rel = "stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">TaskHome</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="About">About</a></li>
+            <li><a href="Contact">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+<br>
+<br>
+    <div class="container">
+      <div class="starter-template">
+        <h1>Welcome To TaskHome</h1>
+        <p class="lead">Simplifying your not so simple life.<br> </p>
+      </div>
+    </div>
+  </body>
 
-<body>
-	<h1>
-	<div align="center">
-  		Task.zzzz
-	</div>
-	</h1>
-	<p> Test </p>
-		<button type = "Add a task"> </button>
-		
-		<form action = "demo">
-		<label for = "Add a task"> Task </label>
-		</form>
-</body>
+<div class="jumbotron">
+  
+  <!--change # to new url-->
+  <h1> <a href="NewTask" class="btn btn-warning btn-lg" id="addButton">+</a></h1> 
+  <p>Add a new task</p>
+</center>
+
+</div>
+<div id="target">
+    Click here
+</div>
+<div id="other">
+    Trigger the handler
+</div>
+
 
 
 </html>
