@@ -52,14 +52,20 @@ function displayButtons()
 {
     for(i = 0; i < tasks.length; i++)
     {
+        if (tasks[i].AmPm==="PM"){
+            var AmPmID = "PM";
+        }
+        else if (tasks[i].AmPm==="AM"){
+            var AmPmID = "AM";
+        }
         if ((tasks[i].minute>0) && (tasks[i].minute <10)){
-            date = tasks[i].month+" "+(tasks[i].day)+", "+(tasks[i].year)+" "+(tasks[i].hour)+":"+"0"+(tasks[i].minute);
+            date = tasks[i].month+" "+(tasks[i].day)+", "+(tasks[i].year)+" "+(tasks[i].hour)+":"+"0"+(tasks[i].minute)+" "+AmPmID;
         }
         else if (tasks[i].minute===0){
-            date = tasks[i].month+" "+(tasks[i].day)+", "+(tasks[i].year)+" "+(tasks[i].hour)+":"+"00";
+            date = tasks[i].month+" "+(tasks[i].day)+", "+(tasks[i].year)+" "+(tasks[i].hour)+":"+"00 "+AmPmID;
         }
         else{
-            date = tasks[i].month+" "+(tasks[i].day)+", "+(tasks[i].year)+" "+(tasks[i].hour)+":"+(tasks[i].minute);
+            date = tasks[i].month+" "+(tasks[i].day)+", "+(tasks[i].year)+" "+(tasks[i].hour)+":"+(tasks[i].minute)+" "+AmPmID;
         }
         createButton(tasks[i].eventA, getColor(tasks[i].status), tasks[i].index1, date)
     }
