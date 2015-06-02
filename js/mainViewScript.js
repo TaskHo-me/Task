@@ -52,7 +52,12 @@ function displayButtons()
 {
     for(i = 0; i < tasks.length; i++)
     {
-        date = tasks[i].month+" "+(tasks[i].day)+", "+(tasks[i].year)+" "+(tasks[i].hour)+":"+(tasks[i].minute)
+        if (tasks[i].minute>0 && tasks[i].minute <10)
+            date = tasks[i].month+" "+(tasks[i].day)+", "+(tasks[i].year)+" "+(tasks[i].hour)+":"+(tasks[i].minute)+"0"
+        else if (tasks[i].minute===0)
+            date = tasks[i].month+" "+(tasks[i].day)+", "+(tasks[i].year)+" "+(tasks[i].hour)+":"+"00"
+        else
+            date = tasks[i].month+" "+(tasks[i].day)+", "+(tasks[i].year)+" "+(tasks[i].hour)+":"+(tasks[i].minute)
         createButton(tasks[i].eventA, getColor(tasks[i].status), tasks[i].index1, date)
     }
 
