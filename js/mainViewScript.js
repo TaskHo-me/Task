@@ -123,7 +123,7 @@ var changeStatus = function(index)
 var getColor = function(status)
 {
     if (status)
-        return 'whitesmoke';
+        return 'bisque';
     return 'blueviolet'
 }
 
