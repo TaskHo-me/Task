@@ -52,17 +52,11 @@ function displayButtons()
 {
     for(i = 0; i < tasks.length; i++)
     {
-        if (tasks[i].AmPm==="PM"){
-            var AmPmID = "PM";
-        }
-        else if (tasks[i].AmPm==="AM"){
-            var AmPmID = "AM";
-        }
         if ((tasks[i].minute>0) && (tasks[i].minute <10)){
-            date = tasks[i].month+" "+(tasks[i].day)+", "+(tasks[i].year)+" "+(tasks[i].hour)+":"+"0"+(tasks[i].minute)+" "+AmPmID;
+            date = tasks[i].month+" "+(tasks[i].day)+", "+(tasks[i].year)+" "+(tasks[i].hour)+":"+"0"+(tasks[i].minute)+" "+tasks[i].AmPm;
         }
         else if (tasks[i].minute===0){
-            date = tasks[i].month+" "+(tasks[i].day)+", "+(tasks[i].year)+" "+(tasks[i].hour)+":"+"00 "+AmPmID;
+            date = tasks[i].month+" "+(tasks[i].day)+", "+(tasks[i].year)+" "+(tasks[i].hour)+":"+"00 "+tasks[i].AmPm;
         }
         else{
             date = tasks[i].month+" "+(tasks[i].day)+", "+(tasks[i].year)+" "+(tasks[i].hour)+":"+(tasks[i].minute)+" "+tasks[i].AmPm;
