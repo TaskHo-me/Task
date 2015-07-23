@@ -59,7 +59,7 @@ function displayButtons()
             date = tasks[i].month+" "+(tasks[i].day)+", "+(tasks[i].year)+" "+(tasks[i].hour)+":"+"00 "+tasks[i].AmPm;
         }
         else{
-            date = tasks[i].month+" "+(tasks[i].day)+", "+(tasks[i].year)+" "+(tasks[i].hour)+":"+(tasks[i].minute)+" "+tasks[i].AmPm;
+            date = tasks[i].month+" "+(tasks[i].day)+", "+(tasks[i].year)+" "+(tasks[i].hour)+":"+(tasks[i].minute)+" "+tasks[i].AmPm + <br> notes;
         }
         createButton(tasks[i].eventA, getColor(tasks[i].status), tasks[i].index1, date)
     }
